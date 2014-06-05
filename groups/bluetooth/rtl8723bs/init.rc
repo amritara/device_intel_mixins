@@ -1,0 +1,26 @@
+on post-fs-data
+    # To store BT paired info
+    mkdir /data/misc/hcid 0770 bluetooth bluetooth
+
+on boot
+    insmod /system/lib/modules/rfkill-gpio.ko
+    insmod /system/lib/modules/iptable_raw.ko
+    insmod /system/lib/modules/ip6table_raw.ko
+    insmod /system/lib/modules/8250_dw.ko
+    insmod /system/lib/modules/6lowpan_iphc.ko
+    insmod /system/lib/modules/bluetooth.ko
+    insmod /system/lib/modules/hci_uart.ko
+    start hciattach-rtk
+
+service hciattach-rtk /system/bin/hciattach /dev/ttyS1 rtk_h5
+    user root
+    group root
+    oneshot
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -d -aABKL -f /system/etc/dhcpcd/android.conf
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    disabled
+    oneshot
