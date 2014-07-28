@@ -8,5 +8,5 @@ endif
 
 # Add Intel adb keys for userdebug/eng builds
 ifneq ($(TARGET_BUILD_VARIANT),user)
-PRODUCT_COPY_FILES += device/intel/common/usb-gadget/adb_keys:data/misc/adb/adb_keys
+PRODUCT_COPY_FILES += device/intel/common/usb-gadget/adb_keys:root/adb_keys
 endif
