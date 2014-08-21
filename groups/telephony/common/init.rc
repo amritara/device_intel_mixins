@@ -1,0 +1,6 @@
+on init
+    # Contains modem-specific data and firmware.
+    mkdir /radio 0770 radio radio
+    # Contains dynamic configuration and calibration data.
+    mkdir /config 0770 radio radio
+

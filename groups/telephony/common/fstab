@@ -1,0 +1,2 @@
+/dev/block/by-name/android_config       /config         ext4    noatime,nosuid,nodev,errors=panic          wait,check
+/dev/block/by-name/android_radio        /radio          ext4    ro                                         wait
