@@ -5,8 +5,8 @@ BOARD_RADIOIMAGE := $(PRODUCT_OUT)/radio.img
 radio_root := $(PRODUCT_OUT)/radio
 radio_mountpoint := /radio
 
-$(BOARD_RADIOIMAGE): $(radio_root)
-	$(hide) $(MKEXTUSERIMG) -s $(radio_root) $(radio_bin) \
+$(BOARD_RADIOIMAGE): $(MKEXTUSERIMG) make_ext4fs $(radio_root)
+	$(hide) $(MKEXTUSERIMG) -s $(radio_root) $(BOARD_RADIOIMAGE) \
 			$(BOARD_RADIOIMAGE_FILE_SYSTEM_TYPE) \
 			$(radio_mountpoint) $(BOARD_RADIOIMAGE_PARTITION_SIZE)
 
