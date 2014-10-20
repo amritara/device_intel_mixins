@@ -1,0 +1,7 @@
+ADDITIONAL_DEFAULT_PROPERTIES += wifi.interface=wlan0
+# FIXME: use VER_0_8_X so lib_driver_cmd_bcmdhd can be built
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WLAN_DEVICE := bcmdhd
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+
