@@ -56,6 +56,11 @@ ifeq ({{{fastboot}}},efi)
 BOARD_GPT_BIN = $(PRODUCT_OUT)/gpt.bin
 BOARD_FLASHFILES += $(BOARD_GPT_BIN):gpt.bin
 INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_BIN)
+
+# For fastboot-uefi we offer the possibility to flash from a USB
+# storage device using the "installer" EFI application
+BOARD_FLASHFILES += $(PRODUCT_OUT)/efi/installer.efi
+BOARD_FLASHFILES += device/intel/common/boot/startup.nsh
 else
 #
 # USERFASTBOOT Configuration
@@ -71,7 +76,7 @@ INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_INI)
 endif
 
 ifneq ($(EFI_EMMC_BIN),)
-BOARD_FLASHFILES += $(EFI_EMMC_BIN):emmc.bin
+BOARD_FLASHFILES += $(EFI_EMMC_BIN):firmware.bin
 endif
 
 ifneq ($(EFI_IFWI_BIN),)
