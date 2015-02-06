@@ -59,3 +59,5 @@ on post-fs-data
     wait /config/wifi/mac.txt
     insmod /system/lib/modules/cfg80211.ko
     insmod /system/lib/modules/bcmdhd_pcie.ko firmware_path=/system/vendor/firmware/brcm/fw_bcmdhd_4356a2_pcie.bin nvram_path=/system/vendor/firmware/brcm/nvram_pcie_4356_a2.cal
+    wait /sys/class/net/wlan0/queues/rx-0/rps_cpus 1
+    write /sys/class/net/wlan0/queues/rx-0/rps_cpus FFFFFFFF
