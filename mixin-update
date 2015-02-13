@@ -287,7 +287,7 @@ def coerce_boolean(d):
 def split_params(selections):
     res = []
     for group, option_params in selections:
-        m = re.match('(\w+)\s*\(([^)]*)\)\s*$', option_params)
+        m = re.match('([^\s(]+)\s*\(([^)]*)\)\s*$', option_params)
         if m is not None:
             option = m.group(1)
             params = dict(map(str.strip, x.split('=', 1)) for x in m.group(2).split(','))
