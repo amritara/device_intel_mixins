@@ -1,0 +1,17 @@
+# STMicroelectronics magnetometers 3-Axis Driver
+# ----------------------------------------------------
+# Supported chips: LSM303DLHC, LSM303DLM, LIS3MDL.
+#
+# Kernel config options (insmod needed for "m" option):
+# ----------------------------------------------------
+# CONFIG_IIO_ST_MAGN_3AXIS=y
+# CONFIG_IIO_ST_MAGN_I2C_3AXIS=y
+# CONFIG_IIO_ST_MAGN_SPI_3AXIS=y
+
+on post-fs
+    setprop ro.iio.magn.name "STMicroelectronics 3-Axis magnetometer"
+    setprop ro.iio.magn.vendor "STMicroelectronics"
+    setprop ro.iio.magn.max_range 30
+    setprop ro.iio.magn.resolution 0.001
+    setprop ro.iio.magn.power 3
+
