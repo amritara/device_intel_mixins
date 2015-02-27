@@ -1,0 +1,19 @@
+# STMicroelectronics accelerometers 3-Axis Driver
+# ----------------------------------------------------
+# Supported chips:
+# LSM303DLH, LSM303DLHC, LIS3DH, LSM330D, LSM330DL, LSM330DLC,
+# LIS331DLH, LSM303DL, LSM303DLM, LSM330.
+#
+# Kernel config options (insmod needed for "m" option):
+# ----------------------------------------------------
+# CONFIG_IIO_ST_ACCEL_3AXIS=y
+# CONFIG_IIO_ST_ACCEL_I2C_3AXIS=y
+# CONFIG_IIO_ST_ACCEL_SPI_3AXIS=y
+
+on post-fs
+    setprop ro.iio.accel.name "STMicroelectronics 3-Axis accelerometer"
+    setprop ro.iio.accel.vendor "STMicroelectronics"
+    setprop ro.iio.accel.max_range 30
+    setprop ro.iio.accel.resolution 0.001
+    setprop ro.iio.accel.power 3
+
