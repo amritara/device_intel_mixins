@@ -1,1 +1,1 @@
-USE_INTEL_SENSOR_HAL := true
+USE_IIO_SENSOR_HAL := true
