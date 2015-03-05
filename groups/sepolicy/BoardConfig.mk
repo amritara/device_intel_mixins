@@ -24,6 +24,7 @@ BOARD_SEPOLICY_UNION := \
     keymaster.te \
     keystore.te \
     mediaserver.te \
+    msync.te \
     netd.te \
     platform_app.te \
     power_hal_helper.te \

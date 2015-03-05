@@ -14,6 +14,7 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
+	ro.ufo.use_msync=1 \
 	ro.ufo.use_coreu=1
 
 BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/color_config
