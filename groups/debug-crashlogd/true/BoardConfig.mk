@@ -1,6 +1,4 @@
-# Enable crashlogd for eng and userdebug builds
-ifneq ($(TARGET_BUILD_VARIANT),user)
-
+ifeq ($(MIXIN_DEBUG_LOGS),true)
 BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/crashlogd
 
 BOARD_SEPOLICY_UNION += \
