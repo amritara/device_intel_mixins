@@ -4,7 +4,6 @@
 PRODUCT_PACKAGES += \
     libdrm \
     libdrm_intel \
-    ufo.prop
 
 #
 # Color conversion library
@@ -25,6 +24,4 @@ else # ufo packages when building from source
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += ro.opengles.version = 196609
-PRODUCT_COPY_FILES += \
-    device/intel/common/ufo/init.ufo.sh:system/etc/init.ufo.sh
 
