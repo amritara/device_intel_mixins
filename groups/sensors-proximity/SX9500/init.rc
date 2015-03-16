@@ -1,0 +1,8 @@
+on post-fs
+    insmod /system/lib/modules/sx9500.ko
+
+    setprop ro.iio.proximity.name "Semtech SX9500"
+    setprop ro.iio.proximity.vendor "Semtech"
+    setprop ro.iio.proximity.resolution 1
+    setprop ro.iio.proximity.max_range 1
+    setprop ro.iio.proximity.power 0.17
