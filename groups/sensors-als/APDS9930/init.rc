@@ -1,0 +1,9 @@
+on post-fs
+    insmod /system/lib/modules/apds9930.ko
+
+    setprop ro.iio.illuminance.name "APDS 9930 Ambient Light Sensor"
+    setprop ro.iio.illuminance.vendor "Avago Technologies"
+    setprop ro.iio.illuminance.resolution 1
+    setprop ro.iio.illuminance.max_range 20000
+    setprop ro.iio.illuminance.power 0.24
+
