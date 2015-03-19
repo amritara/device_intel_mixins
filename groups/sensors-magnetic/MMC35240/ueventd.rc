@@ -1,0 +1,3 @@
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_x_input         0660    system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_y_input         0660    system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_z_input         0660    system  system

@@ -1,0 +1,8 @@
+on post-fs
+    insmod /system/lib/modules/mmc35240.ko
+    setprop ro.iio.magn.name "MMC35240 Magnetometer"
+    setprop ro.iio.magn.vendor "Memsic"
+    setprop ro.iio.magn.max_range 1200
+    setprop ro.iio.magn.resolution 0.01
+    setprop ro.iio.magn.power 2
+
