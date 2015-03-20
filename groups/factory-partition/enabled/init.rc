@@ -1,0 +1,15 @@
+# init.rc for telephony services specific to flashless platforms using /factory partition
+
+on init
+# Used as mounting point for factory partition.
+# Calibration files configuring IMEI and RF calibration will also be stored on this partition.
+    mkdir /factory 0770 system system
+
+on post-fs
+    restorecon_recursive /factory
+
+on post-fs-data
+# create factory modem FW folder
+    mkdir /factory/telephony
+    chown system radio /factory/telephony
+    chmod 770 /factory/telephony
