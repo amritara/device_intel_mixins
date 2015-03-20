@@ -25,6 +25,7 @@ BOARD_SEPOLICY_UNION := \
     keystore.te \
     mediaserver.te \
     msync.te \
+    nfc.te \
     netd.te \
     platform_app.te \
     power_hal_helper.te \
