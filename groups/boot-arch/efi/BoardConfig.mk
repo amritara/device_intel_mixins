@@ -78,3 +78,6 @@ ifneq ($(EFI_IFWI_BIN),)
 BOARD_FLASHFILES += $(EFI_IFWI_BIN):ifwi.bin
 endif
 
+ifneq ($(DNXP_BIN),)
+BOARD_FLASHFILES += $(DNXP_BIN):dnxp_0x1.bin
+endif
