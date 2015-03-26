@@ -15,8 +15,8 @@ TARGET_RELEASETOOLS_EXTENSIONS ?= device/intel/common/recovery/releasetools.py
 TARGET_RECOVERY_UPDATER_LIBS := libupdater_esp
 
 # Extra libraries needed to be rolled into recovery updater
-# libgpt_static is needed by libupdater_esp
-TARGET_RECOVERY_UPDATER_EXTRA_LIBS := libcommon_recovery libgpt_static
+# libgpt_static and libefivar are needed by libupdater_esp
+TARGET_RECOVERY_UPDATER_EXTRA_LIBS := libcommon_recovery libgpt_static libefivar
 
 # By default recovery minui expects RGBA framebuffer
 # also affects UI in Userfastboot
