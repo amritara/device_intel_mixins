@@ -1,9 +1,9 @@
 PRODUCT_PACKAGES += \
     gps.conf \
     gps.xml \
+    gps.cer \
     gps.$(TARGET_BOARD_PLATFORM) \
     gpsd \
-    gpscerd \
 
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.spid.gps.FrqPlan={{{FrqPlan}}}\
