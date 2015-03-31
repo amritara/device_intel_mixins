@@ -165,6 +165,12 @@ KERNELFLINGER_ALLOW_UNSUPPORTED_ACPI_TABLE := true
 # Doesn't work on most boards.
 KERNELFLINGER_USE_POWER_BUTTON := true
 {{/use_power_button}}
+{{#use_charging_applet}}
+# Allow Kernelflinger to use the non-standard ChargingApplet protocol
+# to get battery and charger status and modify the boot flow in
+# consequence.
+KERNELFLINGER_USE_CHARGING_APPLET := true
+{{/use_charging_applet}}
 
 ifneq ($(EFI_IFWI_BIN),)
 $(call dist-for-goals,droidcore,$(EFI_IFWI_BIN):$(TARGET_PRODUCT)-ifwi-$(FILE_NAME_TAG).bin)
