@@ -1,0 +1,3 @@
+BOARD_GPT_MFG_INI ?= $(TARGET_DEVICE_DIR)/gpt-mfg.ini
+
+BOARD_GPT_MFG_BIN = $(PRODUCT_OUT)/gpt-mfg.bin
