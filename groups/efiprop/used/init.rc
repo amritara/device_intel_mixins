@@ -1,0 +1,2 @@
+on late-init
+    mount efivarfs none /sys/firmware/efi/efivars
