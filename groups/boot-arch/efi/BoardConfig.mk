@@ -8,7 +8,7 @@ TARGET_RECOVERY_FSTAB ?= $(TARGET_DEVICE_DIR)/fstab
 
 # Used by ota_from_target_files to add platform-specific directives
 # to the OTA updater scripts
-TARGET_RELEASETOOLS_EXTENSIONS ?= device/intel/common/recovery/releasetools.py
+TARGET_RELEASETOOLS_EXTENSIONS ?= device/intel/common/recovery
 
 # Adds edify commands swap_entries and copy_partition for robust
 # update of the EFI system partition
