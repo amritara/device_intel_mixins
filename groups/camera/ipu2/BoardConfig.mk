@@ -32,3 +32,7 @@ endif
 # depencencies will remove themselves from the build...
 USE_CAMERA_STUB := false
 
+{{#enable_usb}}
+# USB Camera Support
+BOARD_CAMERA_USB_SUPPORT := true
+{{/enable_usb}}
