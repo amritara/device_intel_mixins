@@ -9,9 +9,10 @@
 # CONFIG_IIO_ST_GYRO_SPI_3AXIS=y
 
 on post-fs
-    setprop ro.iio.anglvel.name "STMicroelectronics 3-Axis gyroscope"
-    setprop ro.iio.anglvel.vendor "STMicroelectronics"
+    setprop ro.iio.anglvel.name "STMicro 3-Axis gyroscope"
+    setprop ro.iio.anglvel.vendor "STMicro"
     setprop ro.iio.anglvel.max_range 30
     setprop ro.iio.anglvel.resolution 0.001
     setprop ro.iio.anglvel.power 3
+    setprop ro.iio.anglvel.quirks "no-trig"
 
