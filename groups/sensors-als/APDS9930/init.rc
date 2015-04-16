@@ -6,4 +6,9 @@ on post-fs
     setprop ro.iio.illuminance.resolution 1
     setprop ro.iio.illuminance.max_range 20000
     setprop ro.iio.illuminance.power 0.24
+    setprop ro.iio.prox.apds9930.name "APDS Proximity Sensor"
+    setprop ro.iio.prox.apds9930.vendor "Avago Technologies"
+    setprop ro.iio.prox.apds9930.resolution 1
+    setprop ro.iio.prox.apds9930.max_range 1
+    setprop ro.iio.prox.apds9930.power 0.24
 
