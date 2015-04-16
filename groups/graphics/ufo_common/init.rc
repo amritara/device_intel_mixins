@@ -9,7 +9,3 @@ service coreu /system/bin/coreu
 
 on post-fs-data
     mkdir /data/system 0770 system system
-
-on init
-    mkdir /mnt/libreg 0700 root root
-    mount tmpfs tmpfs /mnt/libreg size=4096,mode=0600
