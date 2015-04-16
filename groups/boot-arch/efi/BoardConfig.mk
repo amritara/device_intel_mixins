@@ -86,3 +86,8 @@ endif
 ifneq ($(DNXP_BIN),)
 BOARD_FLASHFILES += $(DNXP_BIN):dnxp_0x1.bin
 endif
+{{#tdos}}
+# TDOS design requires that the device can't be unlocked
+# as that would defeat it.
+TARGET_NO_DEVICE_UNLOCK := true
+{{/tdos}}

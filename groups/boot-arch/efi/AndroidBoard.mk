@@ -1,3 +1,31 @@
+{{#tdos}}
+BOOTLOADER_ADDITIONAL_DEPS += $(PRODUCT_OUT)/tdos.img
+BOOTLOADER_ADDITIONAL_ARGS += --bootimage $(PRODUCT_OUT)/tdos.img
+
+ifeq ($(TARGET_BUILD_VARIANT),user)
+    TDOS_VARIANT := release
+else
+    TDOS_VARIANT := debug
+endif
+
+tdos_ramdisk := device/intel/common/tdos/$(TDOS_VARIANT)/ramdisk-tdos.img
+
+INSTALLED_RADIOIMAGE_TARGET += $(tdos_ramdisk) $(PRODUCT_OUT)/tdos.img
+
+$(PRODUCT_OUT)/tdos.img: \
+		$(INSTALLED_KERNEL_TARGET) \
+		$(tdos_ramdisk) \
+		$(MKBOOTIMG) $(BOOT_SIGNER) \
+
+	$(hide) mkdir -p $(dir $@)
+	$(hide) $(MKBOOTIMG) --kernel $(INSTALLED_KERNEL_TARGET) \
+			--ramdisk $(tdos_ramdisk) \
+			--cmdline "$(BOARD_KERNEL_CMDLINE)" \
+			$(BOARD_MKBOOTIMG_ARGS) \
+			--output $@
+	$(hide) $(BOOT_SIGNER) /tdos $@ $(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_VERITY_SIGNING_KEY).pk8 \
+			$(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_VERITY_SIGNING_KEY).x509.pem $@
+{{/tdos}}
 
 
 # Rules to create bootloader zip file, a precursor to the bootloader
