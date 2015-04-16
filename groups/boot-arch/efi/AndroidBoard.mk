@@ -8,7 +8,8 @@ else
     TDOS_VARIANT := debug
 endif
 
-tdos_ramdisk := device/intel/common/tdos/$(TDOS_VARIANT)/ramdisk-tdos.img
+# FIXME move to its own repository
+tdos_ramdisk := device/intel/coho/tdos/$(TDOS_VARIANT)/ramdisk-tdos.img
 
 INSTALLED_RADIOIMAGE_TARGET += $(tdos_ramdisk) $(PRODUCT_OUT)/tdos.img
 
