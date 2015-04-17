@@ -10,6 +10,18 @@ PRODUCT_PACKAGES += \
     libmfldadvci \
     dummy.aiqb
 
+{{#enable_acc}}
+# Acc service and client
+PRODUCT_PACKAGES += \
+    libacc_service \
+    libacc_client
+
+# Camera ISP Firmware
+PRODUCT_PACKAGES += \
+    hdr_v2_fw_css21_2401 \
+    ull_v15_fw_css21_2401
+
+{{/enable_acc}}
 # Only include test apps in eng builds.
 PRODUCT_PACKAGES_ENG += \
     TestingCamera \
