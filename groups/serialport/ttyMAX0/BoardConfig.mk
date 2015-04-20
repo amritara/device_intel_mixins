@@ -1,0 +1,1 @@
+BOARD_KERNEL_CMDLINE += console=ttyMAX0,230400n8
