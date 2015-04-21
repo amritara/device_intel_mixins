@@ -4,3 +4,5 @@ service watchdogd /sbin/watchdogd
     oneshot
     seclabel u:r:watchdogd:s0
 
+on boot
+    start watchdogd

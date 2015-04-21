@@ -20,3 +20,6 @@ service watchdogd /sbin/watchdogd
     class core
     oneshot
     seclabel u:r:watchdogd:s0
+
+on charger
+    start watchdogd
