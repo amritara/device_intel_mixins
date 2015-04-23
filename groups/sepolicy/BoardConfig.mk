@@ -41,7 +41,6 @@ BOARD_SEPOLICY_UNION := \
     te_macros \
     thermal.te \
     ueventd.te \
-    untrusted_app.te \
     userfastboot.te \
     vold.te \
     wlan_prov.te \
