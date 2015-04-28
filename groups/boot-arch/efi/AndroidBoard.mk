@@ -171,7 +171,7 @@ endif
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/testkeys_lockdown.txt:test-keys_efi_lockdown.txt)
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/unlock.txt:efi_unlock.txt)
 
-ifeq ({{{fastboot}}},efi)
+{{#fastbootefi}}
 # For fastboot-uefi we need to parse gpt.ini into
 # a binary format.
 
@@ -181,9 +181,11 @@ $(BOARD_GPT_BIN): $(BOARD_GPT_INI)
 	$(hide) $(GPT_INI2BIN) $< > $@
 	$(hide) echo GEN $(notdir $@)
 
-else
+{{/fastbootefi}}
+{{^fastbootefi}}
+# for userfastboot, we need the userfastboot image in the bootloader partition.
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/fastboot.img
-endif
+{{/fastbootefi}}
 
 
 ifneq ($(EFI_IFWI_BIN),)

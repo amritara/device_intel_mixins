@@ -76,8 +76,7 @@ KERNELFLINGER_IGNORE_RSCI := true
 # as that would defeat it.
 TARGET_NO_DEVICE_UNLOCK := true
 {{/tdos}}
-ifneq ({{{fastboot}}},efi)
+{{^fastbootefi}}
 TARGET_STAGE_USERFASTBOOT := true
 TARGET_USE_USERFASTBOOT := true
-endif
-
+{{/fastbootefi}}

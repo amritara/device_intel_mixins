@@ -48,7 +48,7 @@ TARGET_BOOTLOADER_BOARD_NAME := $(TARGET_DEVICE)
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/boot/overlay
 ADDITIONAL_DEFAULT_PROPERTIES += ro.frp.pst=/dev/block/by-name/android_persistent
 
-ifeq ({{{fastboot}}},efi)
+{{#fastbootefi}}
 # For fastboot-uefi we need to parse gpt.ini into
 # a binary format.
 
@@ -61,7 +61,10 @@ INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_BIN)
 # storage device using the "installer" EFI application
 BOARD_FLASHFILES += $(PRODUCT_OUT)/efi/installer.efi
 BOARD_FLASHFILES += device/intel/common/boot/startup.nsh
-else
+
+{{/fastbootefi}}
+{{^fastbootefi}}
+
 #
 # USERFASTBOOT Configuration
 #
@@ -70,7 +73,7 @@ BOOTLOADER_ADDITIONAL_ARGS += --fastboot $(PRODUCT_OUT)/fastboot.img
 
 BOARD_FLASHFILES += $(BOARD_GPT_INI):gpt.ini
 INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_INI)
-endif
+{{/fastbootefi}}
 
 ifneq ($(EFI_EMMC_BIN),)
 BOARD_FLASHFILES += $(EFI_EMMC_BIN):firmware.bin
