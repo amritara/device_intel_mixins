@@ -205,6 +205,11 @@ KERNELFLINGER_USE_WATCHDOG := true
 # consequence.
 KERNELFLINGER_USE_CHARGING_APPLET := true
 {{/use_charging_applet}}
+{{#use_rsci}}
+# Allow Kernelflinger to use the non-standard RSCI ACPI table
+# to get reset and wake source from PMIC
+KERNELFLINGER_USE_RSCI := true
+{{/use_rsci}}
 
 ifneq ($(EFI_IFWI_BIN),)
 $(call dist-for-goals,droidcore,$(EFI_IFWI_BIN):$(TARGET_PRODUCT)-ifwi-$(FILE_NAME_TAG).bin)
