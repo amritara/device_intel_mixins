@@ -5,21 +5,41 @@
 # both directories contain same data
 
 LOCAL_KERNEL_MODULE_FILES :=
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-  # use default kernel
-  LOCAL_KERNEL_PATH := {{{path}}}/$(TARGET_KERNEL_ARCH)
-  LOCAL_KERNEL := $(LOCAL_KERNEL_PATH)/{{{binary_name}}}
-  LOCAL_KERNEL_MODULE_TREE_PATH := $(LOCAL_KERNEL_PATH)/lib/modules
-  BINARIESYAML := {{{path}}}/binaries.yml
-else
-  # use custom kernel. Development mode, developer should invoque make with:
-  # make dist TARGET_PREBUILT_KERNEL=.. TARGET_PREBUILT_KERNEL_MODULE_PATH=.. TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH=..
-  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-  ifneq ($(TARGET_PREBUILT_KERNEL_MODULE_PATH),)
-    LOCAL_KERNEL_MODULE_FILES := $(wildcard $(TARGET_PREBUILT_KERNEL_MODULE_PATH)/*)
+ifneq ($(BUILD_KERNEL_FROM_SRC),)
+  ifeq ($(BUILD_KERNEL_FROM_SRC),1)
+    LOCAL_KERNEL_SRC := $(ANDROID_BUILD_TOP)/{{{src_path}}}
+  else
+    LOCAL_KERNEL_SRC := $(BUILD_KERNEL_FROM_SRC)
   endif
-  ifneq ($(TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH),)
-    LOCAL_KERNEL_MODULE_TREE_PATH := $(TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH)
+    QUILT_DIR := $(ANDROID_BUILD_TOP)/kernel/gmin-quilt-representation/
+    QUILT_BUILD_SCRIPT := {{{quilt_build_script}}}
+    BUILD_RESULT := $(shell cd $(QUILT_DIR) ; \
+      $(QUILT_BUILD_SCRIPT) $(LOCAL_KERNEL_SRC) >$(LOCAL_KERNEL_SRC)/kernel-build.log ; echo $$? )
+    ifneq ($(BUILD_RESULT),0)
+      $(error KERNEL BUILD FAILED, Error $(BUILD_RESULT) )
+    endif
+    LOCAL_KERNEL_PATH := $(QUILT_DIR)/$(TARGET_KERNEL_ARCH)
+    LOCAL_KERNEL := $(LOCAL_KERNEL_PATH)/{{{binary_name}}}
+    LOCAL_KERNEL_MODULE_FILES := $(wildcard $(LOCAL_KERNEL_PATH)/modules/*)
+    LOCAL_KERNEL_MODULE_TREE_PATH := $(LOCAL_KERNEL_PATH)/lib/modules
+else
+  ifeq ($(TARGET_PREBUILT_KERNEL),)
+    # use default kernel
+    LOCAL_KERNEL_PATH := {{{path}}}/$(TARGET_KERNEL_ARCH)
+    LOCAL_KERNEL := $(LOCAL_KERNEL_PATH)/{{{binary_name}}}
+    LOCAL_KERNEL_MODULE_FILES := $(wildcard $(LOCAL_KERNEL_PATH)/modules/*)
+    LOCAL_KERNEL_MODULE_TREE_PATH := $(LOCAL_KERNEL_PATH)/lib/modules
+    BINARIESYAML := {{{path}}}/binaries.yml
+  else
+    # use custom kernel. Development mode, developer should invoque make with:
+    # make dist TARGET_PREBUILT_KERNEL=.. TARGET_PREBUILT_KERNEL_MODULE_PATH=.. TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH=..
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+    ifneq ($(TARGET_PREBUILT_KERNEL_MODULE_PATH),)
+      LOCAL_KERNEL_MODULE_FILES := $(wildcard $(TARGET_PREBUILT_KERNEL_MODULE_PATH)/*)
+    endif
+    ifneq ($(TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH),)
+      LOCAL_KERNEL_MODULE_TREE_PATH := $(TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH)
+    endif
   endif
 endif
 
