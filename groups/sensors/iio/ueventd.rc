@@ -29,10 +29,13 @@
 
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_scale           0660    system  system
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_x_raw           0660    system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_x_input           0660    system  system
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_x_scale         0660    system  system
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_y_raw           0660    system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_y_input           0660    system  system
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_y_scale         0660    system  system
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_z_raw           0660    system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_z_input           0660    system  system
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_magn_z_scale         0660    system  system
 
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_temp_offset          0660    system  system
