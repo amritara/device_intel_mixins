@@ -185,32 +185,6 @@ else
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/fastboot.img
 endif
 
-{{#acpi_permissive}}
-# Kernelflinger won't check the ACPI table oem_id, oem_table_id and
-# revision fields
-KERNELFLINGER_ALLOW_UNSUPPORTED_ACPI_TABLE := true
-{{/acpi_permissive}}
-{{#use_power_button}}
-# Allow Kernelflinger to use the power key as an input source.
-# Doesn't work on most boards.
-KERNELFLINGER_USE_POWER_BUTTON := true
-{{/use_power_button}}
-{{#use_watchdog}}
-# Allow Kernelflinger to start watchdog prior to boot the kernel
-KERNELFLINGER_USE_WATCHDOG := true
-{{/use_watchdog}}
-{{#use_charging_applet}}
-# Allow Kernelflinger to use the non-standard ChargingApplet protocol
-# to get battery and charger status and modify the boot flow in
-# consequence.
-KERNELFLINGER_USE_CHARGING_APPLET := true
-{{/use_charging_applet}}
-{{#ignore_rsci}}
-# Allow Kernelflinger to ignore the non-standard RSCI ACPI table
-# to get reset and wake source from PMIC for bringup phase if
-# the table reports incorrect data
-KERNELFLINGER_IGNORE_RSCI := true
-{{/ignore_rsci}}
 
 ifneq ($(EFI_IFWI_BIN),)
 $(call dist-for-goals,droidcore,$(EFI_IFWI_BIN):$(TARGET_PRODUCT)-ifwi-$(FILE_NAME_TAG).bin)
