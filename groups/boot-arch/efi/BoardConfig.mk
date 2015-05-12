@@ -83,3 +83,11 @@ endif
 ifneq ($(DNXP_BIN),)
 BOARD_FLASHFILES += $(DNXP_BIN):dnxp_0x1.bin
 endif
+
+ifneq ($(CFGPART_XML),)
+BOARD_FLASHFILES += $(CFGPART_XML):cfgpart.xml
+endif
+
+ifneq ($(CSE_SPI_BIN),)
+BOARD_FLASHFILES += $(CSE_SPI_BIN):cse_spi.bin
+endif

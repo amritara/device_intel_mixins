@@ -19,6 +19,8 @@ BOARD_SFU_UPDATE := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT
 EFI_IFWI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_ifwi.bin
 EFI_EMMC_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_emmc.bin
 DNXP_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_dnxp_0x1.bin
+CFGPART_XML := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cfgpart.xml
+CSE_SPI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cse_spi.bin
 
 ifneq ($(CALLED_FROM_SETUP),true)
 ifeq ($(wildcard $(BOARD_SFU_UPDATE)),)
@@ -35,6 +37,12 @@ EFI_IFWI_BIN :=
 endif
 ifeq ($(wildcard $(DNXP_BIN)),)
 DNXP_BIN :=
+endif
+ifeq ($(wildcard $(CFGPART_XML)),)
+CFGPART_XML :=
+endif
+ifeq ($(wildcard $(CSE_SPI_BIN)),)
+CSE_SPI_BIN :=
 endif
 endif
 {{#acpi_permissive}}
