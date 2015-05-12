@@ -6,7 +6,8 @@ KERNEL_LOGLEVEL ?= {{{loglevel}}}
 BOARD_KERNEL_CMDLINE += \
         loglevel=$(KERNEL_LOGLEVEL) \
         androidboot.hardware=$(TARGET_DEVICE)\
-        firmware_class.path=/system/etc/firmware \
+        firmware_class.path=/system/etc/firmware
+
 {{#interactive_governor}}
 BOARD_KERNEL_CMDLINE += \
 	intel_pstate=disable
