@@ -1,0 +1,4 @@
+*/block/sda*                            auto             vfat    defaults                                   voldmanaged=usbdisk:auto
+*/block/mmcblk1*                        auto             vfat    defaults                                   voldmanaged=sdcard1:auto
+/dev/block/mmcblk1p1                    /sdcard          vfat    defaults                                   recoveryonly
+
