@@ -30,6 +30,7 @@ _FILE_LIST = ["BoardConfig.mk", "init.rc", "init.recovery.rc", "fstab", "product
 _PRODUCT_SPEC_FN = "mixins.spec"
 _GROUP_SPEC_FN = "mixinfo.spec"
 _OPTION_SPEC_FN = "option.spec"
+_FILES_SPEC_FN = "files.spec"
 
 abort_on_errors = True
 policy_errors_found = False
@@ -67,8 +68,15 @@ def read_spec_file(specfile, cp=None):
     if not cp:
         cp = ConfigParser.SafeConfigParser()
 
-    with open(specfile) as fp:
-        cp.readfp(fp)
+    try:
+        with open(specfile) as fp:
+            cp.readfp(fp)
+    except IOError:
+        if os.path.islink(specfile):
+            policy_error("reading specfile {} which is a symlink,"
+                         " maybe it is broken".format(specfile))
+        else:
+            policy_error("reading specfile {}".format(specfile))
 
     return cp
 
@@ -300,6 +308,27 @@ def check_section(section, cp, specfile):
         return False
     return True
 
+def extrafiles_from_selections(basedir, selections):
+
+    extrafiles = []
+    for (group, option, params) in selections:
+        groupdir = os.path.join(basedir, group)
+
+        # Check for a files.spec file in the mixin directory.
+        # The section [extrafiles] can be used to expand the
+        # _FILE_LIST
+        specfile = os.path.join(groupdir, option, _FILES_SPEC_FN)
+        if os.path.isfile(specfile) or os.path.islink(specfile):
+            cp = read_spec_file(specfile)
+            # append all files found in the section avoiding duplicate
+            # entries
+            if cp.has_section("extrafiles"):
+                for newfile, comment in cp.items("extrafiles"):
+                    if newfile not in extrafiles + _FILE_LIST:
+                        extrafiles.append(newfile)
+
+    return extrafiles
+
 def process_spec_file(specfile, dry_run):
     cp = read_spec_file(specfile)
 
@@ -315,10 +344,11 @@ def process_spec_file(specfile, dry_run):
     product_dir = os.path.dirname(specfile)
     file_map = {}
     retval = True
+    extrafiles = extrafiles_from_selections(basedir, selections)
 
     # Set up the file map since the config files in the product directory
     # may have slightly different names than what is in _FILE_LIST
-    for fname in _FILE_LIST:
+    for fname in _FILE_LIST + extrafiles:
         if cp.has_option("mapping", fname):
             file_map[fname] = cp.get("mapping", fname).split()
         else:
