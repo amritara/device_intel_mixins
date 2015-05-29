@@ -1,4 +1,10 @@
 ifeq ($(MIXIN_DEBUG_LOGS),true)
+BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/coredump
+
+BOARD_SEPOLICY_UNION += \
+	coredump.te \
+	file_contexts
+
 # Enable core dump for eng builds
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 ADDITIONAL_DEFAULT_PROPERTIES += persist.core.enabled=1
