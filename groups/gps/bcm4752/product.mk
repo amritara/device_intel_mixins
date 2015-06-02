@@ -7,7 +7,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.spid.gps.FrqPlan={{{FrqPlan}}}\
-        ro.spid.gps.RfType={{{RfType}}}
+        ro.spid.gps.RfType={{{RfType}}}\
         ro.spid.gps.pmm=disabled
 
 PRODUCT_COPY_FILES += \
