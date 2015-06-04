@@ -1,0 +1,1 @@
+../iwlwifi/BoardConfig.mk
