@@ -4,6 +4,7 @@ BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/crashlogd
 BOARD_SEPOLICY_UNION += \
 	crashlogd.te \
 	dumpstate_dropbox.te \
+	system_server.te \
 	file_contexts
 
 CRASHLOGD_LOGS_PATH := "/data/logs"
