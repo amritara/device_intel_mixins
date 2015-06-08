@@ -14,6 +14,7 @@ on post-fs
     setprop ro.iio.anglvel.max_range 30
     setprop ro.iio.anglvel.resolution 0.001
     setprop ro.iio.anglvel.power 3
-    setprop ro.iio.anglvel.quirks "no-trig"
+    setprop ro.iio.anglvel.scale 0.001222
+    setprop ro.iio.anglvel.quirks "hrtimer"
     setprop ro.iio.anglvel.max_freq 200
 

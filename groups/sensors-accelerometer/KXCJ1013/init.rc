@@ -6,5 +6,8 @@ on post-fs
     setprop ro.iio.accel.max_range 39.19
     setprop ro.iio.accel.resolution 0.01
     setprop ro.iio.accel.power 0.5
+    setprop ro.iio.accel.min_freq 10
+    setprop ro.iio.accel.max_freq 200
+    setprop ro.iio.accel.quirks "hrtimer"
 
 
