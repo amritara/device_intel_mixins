@@ -24,5 +24,3 @@ service power_hal_helper /system/vendor/bin/power_hal_helper
 on property:init.svc.media=running
     start power_hal_helper
 
-on property:sys.boot_completed=1
-	write /sys/devices/system/cpu/cpufreq/interactive/boost 0
