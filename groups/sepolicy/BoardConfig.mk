@@ -1,7 +1,5 @@
 # SELinux Policy
 BOARD_SEPOLICY_DIRS := device/intel/common/sepolicy
-BOARD_SEPOLICY_REPLACE := \
-    domain.te
 
 # please keep this list in alphabetical order
 BOARD_SEPOLICY_UNION := \
