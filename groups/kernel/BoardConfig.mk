@@ -7,6 +7,11 @@ BOARD_KERNEL_CMDLINE += \
         loglevel=$(KERNEL_LOGLEVEL) \
         androidboot.hardware=$(TARGET_DEVICE)\
         firmware_class.path=/system/etc/firmware
+{{#boot_boost}}
+
+BOARD_KERNEL_CMDLINE += \
+        bootboost=1
+{{/boot_boost}}
 
 {{#interactive_governor}}
 BOARD_KERNEL_CMDLINE += \
