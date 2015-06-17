@@ -18,6 +18,7 @@ PRODUCT_COPY_FILES += \
 BOARD_SFU_UPDATE := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT).fv
 EFI_IFWI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_ifwi.bin
 EFI_EMMC_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_emmc.bin
+EFI_AFU_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_afu.bin
 DNXP_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_dnxp_0x1.bin
 CFGPART_XML := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cfgpart.xml
 CSE_SPI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cse_spi.bin
@@ -34,6 +35,10 @@ endif
 ifeq ($(wildcard $(EFI_IFWI_BIN)),)
 $(warning $(EFI_IFWI_BIN) not found, IFWI binary will not be provided in out/dist/)
 EFI_IFWI_BIN :=
+endif
+ifeq ($(wildcard $(EFI_AFU_BIN)),)
+$(warning $(EFI_AFU_BIN) not found, IFWI binary will not be provided in out/dist/)
+EFI_AFU_BIN :=
 endif
 ifeq ($(wildcard $(DNXP_BIN)),)
 DNXP_BIN :=
