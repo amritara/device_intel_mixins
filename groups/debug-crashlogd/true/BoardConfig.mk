@@ -7,4 +7,7 @@ CRASHLOGD_FULL_REPORT := true
 CRASHLOGD_MODULE_MODEM ?= true
 CRASHLOGD_MODULE_BTDUMP := true
 CRASHLOGD_USE_SD := false
+{{#arch}}
+CRASHLOGD_ARCH := {{{arch}}}
+{{/arch}}
 endif

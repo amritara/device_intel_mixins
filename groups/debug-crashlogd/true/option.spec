@@ -1,0 +1,2 @@
+[defaults]
+arch = false
