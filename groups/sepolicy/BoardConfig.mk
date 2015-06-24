@@ -41,6 +41,7 @@ BOARD_SEPOLICY_UNION := \
     system_server.te \
     te_macros \
     thermal.te \
+    thermal_lite.te \
     ueventd.te \
     untrusted_app.te \
     userfastboot.te \
