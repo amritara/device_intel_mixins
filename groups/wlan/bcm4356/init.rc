@@ -54,6 +54,10 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
+on charger
+    insmod /system/lib/modules/cfg80211.ko
+    insmod /system/lib/modules/bcmdhd_pcie.ko firmware_path=/system/vendor/firmware/brcm/fw_bcmdhd_4356a2_pcie.bin nvram_path=/system/vendor/firmware/brcm/nvram_pcie_4356_a2.cal
+
 on post-fs
     restorecon_recursive /config/wifi
 
