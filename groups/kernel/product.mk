@@ -13,8 +13,11 @@ ifneq ($(BUILD_KERNEL_FROM_SRC),)
   endif
     QUILT_DIR := $(ANDROID_BUILD_TOP)/kernel/gmin-quilt-representation/
     QUILT_BUILD_SCRIPT := {{{quilt_build_script}}}
+    ifneq ($(filter eng userdebug,$(TARGET_BUILD_VARIANT)),)
+      BUILD_KERNEL_FROM_SRC_FLAGS := "-d"
+    endif
     BUILD_RESULT := $(shell cd $(QUILT_DIR) ; \
-      $(QUILT_BUILD_SCRIPT) $(LOCAL_KERNEL_SRC) >$(LOCAL_KERNEL_SRC)/kernel-build.log ; echo $$? )
+      $(QUILT_BUILD_SCRIPT) $(BUILD_KERNEL_FROM_SRC_FLAGS) $(LOCAL_KERNEL_SRC) >$(LOCAL_KERNEL_SRC)/kernel-build.log ; echo $$? )
     ifneq ($(BUILD_RESULT),0)
       $(error KERNEL BUILD FAILED, Error $(BUILD_RESULT) )
     endif
