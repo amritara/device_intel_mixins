@@ -6,6 +6,9 @@ WPA_SUPPLICANT_VERSION := VER_2_1_DEVEL_WCS
 # Enabling iwlwifi
 BOARD_USING_INTEL_IWL := true
 
+COMBO_CHIP_VENDOR := intel
+COMBO_CHIP := lnp
+
 # SoftAp FW reload definitions.
 # we don't really need this, it's to avoid error when the framework
 # will trigger the fwReloadSoftap function, what will lead to an error
