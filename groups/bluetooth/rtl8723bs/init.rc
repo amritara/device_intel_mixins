@@ -4,6 +4,9 @@
 ########################################################
 on boot
     insmod /system/lib/modules/bt_lpm.ko
+    insmod /system/lib/modules/iptable_raw.ko
+    insmod /system/lib/modules/ip6table_raw.ko
+    insmod /system/lib/modules/6lowpan_iphc.ko
     start rfkill_bt
 
 on post-fs
@@ -73,9 +76,9 @@ service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
 service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
-{{/hsu}}
 
 on boot
     insmod /system/lib/modules/iptable_raw.ko
     insmod /system/lib/modules/ip6table_raw.ko
     insmod /system/lib/modules/6lowpan_iphc.ko
+{{/hsu}}
