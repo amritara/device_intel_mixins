@@ -1,9 +1,5 @@
 TARGET_UEFI_ARCH := {{{uefi_arch}}}
-ifeq ($(TARGET_BUILD_VARIANT),user)
-    BIOS_VARIANT := release
-else
-    BIOS_VARIANT := debug
-endif
+BIOS_VARIANT := {{{bios_variant}}}
 
 $(call inherit-product,build/target/product/verity.mk)
 
@@ -23,6 +19,11 @@ DNXP_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_dnxp_0
 CFGPART_XML := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cfgpart.xml
 CSE_SPI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cse_spi.bin
 
+ifneq ($(TARGET_BUILD_VARIANT),user)
+# Allow to add debug ifwi file only on userdebug and eng flashfiles
+EFI_IFWI_DEBUG_BIN := hardware/intel/efi_capsules/debug/$(TARGET_PRODUCT)_ifwi.bin
+endif
+
 ifneq ($(CALLED_FROM_SETUP),true)
 ifeq ($(wildcard $(BOARD_SFU_UPDATE)),)
 $(warning $(BOARD_SFU_UPDATE) not found, OTA updates will not provide a firmware capsule)
@@ -39,6 +40,9 @@ endif
 ifeq ($(wildcard $(EFI_AFU_BIN)),)
 $(warning $(EFI_AFU_BIN) not found, IFWI binary will not be provided in out/dist/)
 EFI_AFU_BIN :=
+endif
+ifeq ($(wildcard $(EFI_IFWI_DEBUG_BIN)),)
+EFI_IFWI_DEBUG_BIN :=
 endif
 ifeq ($(wildcard $(DNXP_BIN)),)
 DNXP_BIN :=

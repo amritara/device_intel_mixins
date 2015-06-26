@@ -7,3 +7,4 @@ use_charging_applet = false
 ignore_rsci = false
 tdos = false
 magic_key_timeout = false
+bios_variant = release
