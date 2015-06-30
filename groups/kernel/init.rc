@@ -36,6 +36,7 @@ on boot
 {{/interactive_governor}}
 {{#boot_boost}}
 on property:sys.boot_completed=1
-       write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+	write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+	write /sys/devices/system/cpu/cpufreq/interactive/irq_load_threshold 2
 
 {{/boot_boost}}
