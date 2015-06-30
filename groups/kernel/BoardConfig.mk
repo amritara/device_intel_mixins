@@ -13,6 +13,10 @@ BOARD_KERNEL_CMDLINE += \
         bootboost=1
 {{/boot_boost}}
 
+{{#memory_hole}}
+BOARD_KERNEL_CMDLINE += \
+        memmap=4M\$$0x5c400000
+{{/memory_hole}}
 {{#interactive_governor}}
 BOARD_KERNEL_CMDLINE += \
 	intel_pstate=disable
