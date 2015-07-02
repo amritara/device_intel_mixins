@@ -64,6 +64,10 @@ KERNELFLINGER_ALLOW_UNSUPPORTED_ACPI_TABLE := true
 # Doesn't work on most boards.
 KERNELFLINGER_USE_POWER_BUTTON := true
 {{/use_power_button}}
+{{^disable_watchdog}}
+# Allow Kernelflinger to start watchdog prior to boot the kernel
+KERNELFLINGER_USE_WATCHDOG := true
+{{/disable_watchdog}}
 {{#use_charging_applet}}
 # Allow Kernelflinger to use the non-standard ChargingApplet protocol
 # to get battery and charger status and modify the boot flow in
