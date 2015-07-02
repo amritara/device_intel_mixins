@@ -21,3 +21,5 @@ WIFI_DRIVER_FW_PATH_PARAM := "/dev/null"
 
 # config_wifi_background_scan_support=true:
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-pno
+
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-tcp-buffers
