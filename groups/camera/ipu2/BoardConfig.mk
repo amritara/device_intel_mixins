@@ -39,6 +39,5 @@ BOARD_CAMERA_USB_SUPPORT := true
 {{#enable_acc}}
 # the CHT needs to support ACC
 PLATFORM_ACC_SUPPORT := true
-BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/atomisp
-BOARD_SEPOLICY_UNION += service_contexts
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/atomisp
 {{/enable_acc}}

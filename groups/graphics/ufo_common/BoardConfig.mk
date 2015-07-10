@@ -17,9 +17,4 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.ufo.use_msync=1 \
 	ro.ufo.use_coreu=1
 
-BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/color_config
-
-# Please keep this list in alphabetical order.
-BOARD_SEPOLICY_UNION += \
-        file_contexts \
-        color_config.te \
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/color_config

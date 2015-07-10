@@ -1,2 +1,1 @@
-BOARD_SEPOLICY_UNION += \
-	set_storage.te
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/set_storage
