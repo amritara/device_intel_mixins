@@ -1,2 +1,2 @@
 # SELinux Policy
-BOARD_SEPOLICY_DIRS := device/intel/sepolicy
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy
