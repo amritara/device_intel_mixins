@@ -6,3 +6,4 @@ on post-fs
     setprop ro.iio.magn.resolution 0.01
     setprop ro.iio.magn.power 2
     setprop ro.iio.magn.max_freq 50
+    setprop ro.iio.magn.quirks "hrtimer"
