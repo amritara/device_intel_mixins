@@ -9,8 +9,14 @@ PRODUCT_PACKAGES += \
     hciattach \
 {{/hsu}}
     audio.a2dp.default \
+{{#libbt_rtk}}
+    rtl8723b_libbt_config \
+    rtl8723b_libbt_fw \
+{{/libbt_rtk}}
+{{^libbt_rtk}}
     rtl8723b_config \
     rtl8723b_fw \
+{{/libbt_rtk}}
 
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
 		frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
