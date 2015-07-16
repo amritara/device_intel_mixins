@@ -1,9 +1,0 @@
-on property:sys.boot_completed=1
-    start ufs_pm
-
-service ufs_pm /system/bin/sh /system/bin/ufs_pm.sh
-    class main
-    user root
-    disabled
-    oneshot
-
