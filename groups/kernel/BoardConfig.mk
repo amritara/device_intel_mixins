@@ -21,4 +21,9 @@ BOARD_KERNEL_CMDLINE += \
 BOARD_KERNEL_CMDLINE += \
 	intel_pstate=disable
 {{/interactive_governor}}
+{{#relative_sleepstates}}
+
+BOARD_KERNEL_CMDLINE += \
+        relative_sleep_states=1
+{{/relative_sleepstates}}
 

@@ -1,3 +1,4 @@
 [defaults]
 boot_boost = false
+relative_sleepstates = false
 memory_hole = false
